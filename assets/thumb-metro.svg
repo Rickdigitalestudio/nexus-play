@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="mBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFD75E"/>
+      <stop offset=".55" stop-color="#FCA13A"/>
+      <stop offset="1" stop-color="#EF5F2B"/>
+    </linearGradient>
+    <radialGradient id="mSun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFF6D2"/>
+      <stop offset=".7" stop-color="#FFE08A" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#FFE08A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mTrain" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3E2240"/>
+      <stop offset="1" stop-color="#241226"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="256" height="256" fill="url(#mBg)"/>
+  <circle cx="182" cy="66" r="78" fill="url(#mSun)"/>
+
+  <!-- linhas de velocidade -->
+  <g stroke="#FFF3CE" stroke-width="7" stroke-linecap="round" opacity=".55">
+    <path d="M14 62h64"/><path d="M6 96h48"/><path d="M22 130h40"/>
+  </g>
+
+  <!-- metrô ao fundo -->
+  <g>
+    <rect x="120" y="86" width="150" height="96" rx="20" fill="url(#mTrain)"/>
+    <rect x="136" y="104" width="34" height="30" rx="8" fill="#8FE6FF"/>
+    <rect x="182" y="104" width="34" height="30" rx="8" fill="#8FE6FF"/>
+    <rect x="228" y="104" width="34" height="30" rx="8" fill="#6FCEE8"/>
+    <rect x="120" y="152" width="150" height="10" fill="#F4B23C" opacity=".8"/>
+    <circle cx="152" cy="192" r="13" fill="#1A0D14"/>
+    <circle cx="232" cy="192" r="13" fill="#1A0D14"/>
+  </g>
+
+  <!-- pista -->
+  <rect y="196" width="256" height="60" fill="#C4491F"/>
+  <g stroke="#FFE7B4" stroke-width="8" stroke-linecap="round" stroke-dasharray="26 22" opacity=".8">
+    <path d="M0 230h256"/>
+  </g>
+
+  <!-- corredor -->
+  <g fill="#2A0F1A">
+    <circle cx="94" cy="98" r="16"/>
+    <path d="M78 114c12-6 26-6 36 2l10 32-18 8-8-18-6 46-18-4 4-48-16 14-10-14z"/>
+    <path d="m112 156 22 16-8 14-26-16z"/>
+    <path d="m78 178-20 34 14 8 24-30z"/>
+    <path d="m96 184 6 40h16l-4-42z"/>
+  </g>
+  <!-- braçadeira -->
+  <path d="M84 118c10-4 20-4 28 0" stroke="#FFF3CE" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>

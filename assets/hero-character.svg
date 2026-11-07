@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 400" width="440" height="400" fill="none">
+  <defs>
+    <linearGradient id="hgArmor" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7A5028"/>
+      <stop offset=".38" stop-color="#402A19"/>
+      <stop offset="1" stop-color="#1D120C"/>
+    </linearGradient>
+    <linearGradient id="hgArmor2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#63401F"/>
+      <stop offset="1" stop-color="#241610"/>
+    </linearGradient>
+    <linearGradient id="hgGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFE9A6"/>
+      <stop offset=".5" stop-color="#F3B33C"/>
+      <stop offset="1" stop-color="#A65F14"/>
+    </linearGradient>
+    <linearGradient id="hgSkin" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E8A973"/>
+      <stop offset="1" stop-color="#8E552F"/>
+    </linearGradient>
+    <linearGradient id="hgCannon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9B8AF5"/>
+      <stop offset=".5" stop-color="#5B4BC4"/>
+      <stop offset="1" stop-color="#2A2170"/>
+    </linearGradient>
+    <linearGradient id="hgRifle" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4E3A2A"/>
+      <stop offset="1" stop-color="#1C130D"/>
+    </linearGradient>
+    <radialGradient id="hgGlow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFC66B" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#FFC66B" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="hgGreen" cx=".45" cy=".4" r=".6">
+      <stop offset="0" stop-color="#D8FFEA"/>
+      <stop offset="1" stop-color="#31C97A"/>
+    </radialGradient>
+  </defs>
+
+  <!-- brilho quente atrás do personagem -->
+  <ellipse cx="235" cy="165" rx="205" ry="180" fill="url(#hgGlow)"/>
+
+  <!-- canhão de energia (atrás do pauldron) -->
+  <g transform="translate(322 206) rotate(-30)">
+    <rect x="-4" y="-27" width="102" height="54" rx="26" fill="url(#hgCannon)"/>
+    <rect x="6" y="-21" width="76" height="9" rx="4.5" fill="#CFC6FF" opacity=".5"/>
+    <rect x="86" y="-33" width="30" height="66" rx="15" fill="#8B7BF2"/>
+    <rect x="108" y="-25" width="12" height="50" rx="6" fill="#6A57DC"/>
+    <circle cx="30" cy="4" r="13" fill="url(#hgGreen)"/>
+    <circle cx="62" cy="4" r="10" fill="url(#hgGreen)"/>
+    <circle cx="86" cy="4" r="7" fill="url(#hgGreen)"/>
+  </g>
+
+  <!-- torso -->
+  <path d="M152 214c8-24 32-42 64-42s56 18 64 42l12 186H140z" fill="url(#hgArmor)"/>
+  <path d="M216 172c32 0 56 18 64 42l12 186h-76z" fill="#000" opacity=".22"/>
+
+  <!-- peitoral -->
+  <path d="M188 220h56l12 36-40 32-40-32z" fill="url(#hgGold)" opacity=".92"/>
+  <path d="M204 232h24l7 20-19 16-19-16z" fill="#2A1A10" opacity=".55"/>
+  <!-- tiras / detalhes -->
+  <path d="M176 300h84M172 330h92" stroke="#0F0906" stroke-width="7" stroke-linecap="round" opacity=".5"/>
+  <rect x="140" y="352" width="152" height="26" rx="10" fill="#241510"/>
+  <rect x="200" y="356" width="42" height="18" rx="6" fill="url(#hgGold)"/>
+
+  <!-- luz de contorno (lado esquerdo, luz dourada) -->
+  <path d="M152 214c8-24 32-42 64-42" stroke="#FFD98A" stroke-width="5.5" fill="none" stroke-linecap="round" opacity=".85"/>
+  <path d="M147 246 142 400" stroke="#FFD98A" stroke-width="4.5" fill="none" stroke-linecap="round" opacity=".4"/>
+
+  <!-- ombro esquerdo -->
+  <g transform="rotate(-12 162 216)">
+    <ellipse cx="162" cy="216" rx="50" ry="37" fill="url(#hgArmor2)"/>
+    <path d="M118 226c6-20 24-34 46-36" stroke="url(#hgGold)" stroke-width="6" fill="none" stroke-linecap="round" opacity=".9"/>
+    <path d="M126 240h72" stroke="#0F0906" stroke-width="5" stroke-linecap="round" opacity=".45"/>
+  </g>
+
+  <!-- ombro direito -->
+  <ellipse cx="316" cy="224" rx="53" ry="42" transform="rotate(-8 316 224)" fill="url(#hgArmor2)"/>
+  <path d="M272 240c6-24 24-40 48-44" stroke="url(#hgGold)" stroke-width="6" fill="none" stroke-linecap="round" opacity=".85"/>
+  <circle cx="296" cy="256" r="9" fill="url(#hgGreen)"/>
+
+  <!-- braço esquerdo erguido -->
+  <path d="M176 198 144 172 120 140" stroke="#2C1D13" stroke-width="38" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M170 191 141 166 118 135" stroke="#E2A24A" stroke-width="6" stroke-linecap="round" fill="none" opacity=".7"/>
+  <rect x="106" y="126" width="30" height="26" rx="9" transform="rotate(41 121 139)" fill="#3A2717"/>
+  <path d="M112 133 134 150" stroke="#F3B33C" stroke-width="3.5" stroke-linecap="round" opacity=".75"/>
+
+  <!-- pescoço + cabeça -->
+  <rect x="196" y="126" width="42" height="44" rx="12" fill="#7A4726"/>
+  <ellipse cx="216" cy="96" rx="36" ry="42" fill="url(#hgSkin)"/>
+  <!-- bandana ao vento -->
+  <path d="M184 78c-16 1-30 8-40 19 12-5 23-7 33-6-9 7-15 16-17 27 9-12 18-19 29-23z" fill="#F4C93F"/>
+  <path d="M184 78c-9-10-10-24-4-34-11 6-16 19-14 32 1 7 6 12 13 15z" fill="#E0A82F"/>
+  <!-- capacete -->
+  <path d="M178 102c-5-33 14-58 38-58s43 25 38 58c-8-17-22-27-38-27s-30 10-38 27z" fill="url(#hgArmor)"/>
+  <path d="M216 44c24 0 43 25 38 58-8-17-22-27-38-27z" fill="#000" opacity=".25"/>
+  <path d="M198 56c6-9 12-14 18-15" stroke="#FFD98A" stroke-width="4.5" stroke-linecap="round" fill="none" opacity=".8"/>
+  <!-- fone de ouvido -->
+  <circle cx="182" cy="104" r="15" fill="#2E1E14"/>
+  <circle cx="182" cy="104" r="6" fill="url(#hgGold)"/>
+  <!-- visor -->
+  <rect x="184" y="96" width="64" height="21" rx="10" fill="#170E08"/>
+  <rect x="187" y="99" width="58" height="15" rx="7.5" fill="#2A1A11"/>
+  <path d="M192 106h42" stroke="url(#hgGold)" stroke-width="5" stroke-linecap="round"/>
+  <!-- máscara -->
+  <path d="M192 117h48v4c0 15-11 26-24 26s-24-11-24-26z" fill="#31200F"/>
+  <path d="M200 128h32" stroke="#F3B33C" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+
+  <!-- rifle (segurado, aponta para cima à esquerda) -->
+  <g transform="translate(14 8) rotate(34)">
+    <rect x="-8" y="3" width="26" height="30" rx="7" fill="#241811"/>
+    <rect x="4" y="8" width="140" height="19" rx="7" fill="url(#hgRifle)"/>
+    <rect x="10" y="8" width="126" height="5" rx="2.5" fill="#F3B33C" opacity=".8"/>
+    <rect x="88" y="-1" width="124" height="38" rx="11" fill="url(#hgRifle)"/>
+    <rect x="112" y="-17" width="58" height="18" rx="8" fill="#241811"/>
+    <circle cx="166" cy="-8" r="7" fill="url(#hgGold)"/>
+    <rect x="138" y="34" width="36" height="50" rx="10" transform="rotate(9 156 59)" fill="#241811"/>
+    <rect x="142" y="38" width="28" height="6" rx="3" transform="rotate(9 156 41)" fill="#F3B33C" opacity=".7"/>
+    <rect x="178" y="30" width="27" height="46" rx="11" transform="rotate(-14 191 53)" fill="#33231A"/>
+    <rect x="204" y="3" width="66" height="27" rx="12" fill="url(#hgRifle)"/>
+    <rect x="210" y="7" width="52" height="6" rx="3" fill="#F3B33C" opacity=".55"/>
+  </g>
+
+  <!-- mão sobre a empunhadura -->
+  <g transform="translate(113 129) rotate(34)">
+    <rect x="-17" y="-15" width="34" height="31" rx="11" fill="#31200F"/>
+    <path d="M-11 -6h22M-11 3h22" stroke="#6B4A2B" stroke-width="3.4" stroke-linecap="round"/>
+  </g>
+</svg>

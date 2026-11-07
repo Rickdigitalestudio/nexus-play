@@ -1,0 +1,40 @@
+# Dependências
+node_modules/
+
+# Build / saída local
+dist/
+build/
+out/
+
+# IDE / editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Outros
+test-probe.html
+start.bat.txt
+server.py
+fix-encoding.js
+fix2.js
+modify.ps1

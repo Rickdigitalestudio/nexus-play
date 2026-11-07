@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 500" width="520" height="500">
+  <defs>
+    <linearGradient id="qBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A1150"/>
+      <stop offset=".55" stop-color="#150A2E"/>
+      <stop offset="1" stop-color="#090517"/>
+    </linearGradient>
+    <radialGradient id="qSun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FF6BC1" stop-opacity=".85"/>
+      <stop offset=".6" stop-color="#B23CE0" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#B23CE0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="qGrid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5BE7FF" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#5BE7FF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="520" height="500" fill="url(#qBg)"/>
+  <circle cx="330" cy="150" r="160" fill="url(#qSun)"/>
+
+  <!-- sol neon -->
+  <g>
+    <circle cx="330" cy="150" r="76" fill="#FF7BD5"/>
+    <g stroke="#150A2E" stroke-width="7">
+      <path d="M254 140h152"/><path d="M256 162h148"/><path d="M264 184h132"/>
+    </g>
+  </g>
+
+  <!-- skyline -->
+  <g fill="#100826">
+    <rect x="0" y="240" width="70" height="260"/>
+    <rect x="78" y="196" width="58" height="304"/>
+    <rect x="146" y="272" width="66" height="228"/>
+    <rect x="222" y="220" width="54" height="280"/>
+    <rect x="286" y="284" width="72" height="216"/>
+    <rect x="368" y="236" width="60" height="264"/>
+    <rect x="438" y="290" width="82" height="210"/>
+  </g>
+  <!-- janelas neon -->
+  <g fill="#5BE7FF" opacity=".85">
+    <rect x="14" y="262" width="12" height="16"/><rect x="38" y="262" width="12" height="16"/>
+    <rect x="14" y="294" width="12" height="16"/><rect x="38" y="294" width="12" height="16"/>
+    <rect x="94" y="220" width="12" height="16"/><rect x="116" y="220" width="12" height="16"/>
+    <rect x="94" y="252" width="12" height="16"/><rect x="116" y="284" width="12" height="16"/>
+    <rect x="164" y="296" width="12" height="16"/><rect x="188" y="296" width="12" height="16"/>
+    <rect x="386" y="260" width="12" height="16"/><rect x="410" y="260" width="12" height="16"/>
+    <rect x="386" y="292" width="12" height="16"/><rect x="410" y="324" width="12" height="16"/>
+  </g>
+  <g fill="#FF6BC1" opacity=".85">
+    <rect x="236" y="244" width="12" height="16"/><rect x="256" y="244" width="12" height="16"/>
+    <rect x="236" y="276" width="12" height="16"/><rect x="304" y="308" width="12" height="16"/>
+    <rect x="330" y="308" width="12" height="16"/><rect x="456" y="314" width="12" height="16"/>
+    <rect x="482" y="314" width="12" height="16"/><rect x="456" y="346" width="12" height="16"/>
+    <rect x="164" y="330" width="12" height="16"/><rect x="304" y="340" width="12" height="16"/>
+  </g>
+
+  <!-- chão com linhas em perspectiva -->
+  <path d="M0 372h520v128H0z" fill="#0A0519"/>
+  <g stroke="url(#qGrid)" stroke-width="4">
+    <path d="M0 386h520"/>
+    <path d="M0 414h520"/>
+    <path d="M0 452h520"/>
+    <path d="M260 372 60 500M260 372l140 128M260 372 160 500M260 372l40 128M260 372l-40 128M260 372 360 500"/>
+  </g>
+
+  <!-- piloto -->
+  <g fill="#05020E">
+    <circle cx="176" cy="292" r="24"/>
+    <path d="M154 300h44v18h-44z"/>
+    <path d="M152 320c14-10 36-10 50 0l12 60-22 12-12-30-6 66h-40l-4-66-14 30-20-12z"/>
+    <path d="m150 424-10 76h24l14-64 12 64h24l-8-80z"/>
+  </g>
+  <path d="M158 306h36" stroke="#5BE7FF" stroke-width="8" stroke-linecap="round"/>
+  <path d="M212 336c16-4 30-12 40-24" stroke="#05020E" stroke-width="20" stroke-linecap="round" fill="none"/>
+</svg>

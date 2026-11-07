@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 500" width="520" height="500">
+  <defs>
+    <linearGradient id="aBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0B1E3F"/>
+      <stop offset=".55" stop-color="#081227"/>
+      <stop offset="1" stop-color="#04070F"/>
+    </linearGradient>
+    <radialGradient id="aGlow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#7CF5D4" stop-opacity=".7"/>
+      <stop offset=".6" stop-color="#3FA9E8" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#3FA9E8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="aBeam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8FF3E1" stop-opacity="0"/>
+      <stop offset=".45" stop-color="#8FF3E1" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#5BB8FF" stop-opacity=".1"/>
+    </linearGradient>
+    <linearGradient id="aPlanet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E9D9A6"/>
+      <stop offset="1" stop-color="#9A7B45"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="520" height="500" fill="url(#aBg)"/>
+
+  <!-- estrelas -->
+  <g fill="#DCEBFF">
+    <circle cx="54" cy="60" r="2.4" opacity=".9"/><circle cx="128" cy="34" r="1.6" opacity=".7"/>
+    <circle cx="204" cy="88" r="2" opacity=".8"/><circle cx="286" cy="46" r="1.5" opacity=".6"/>
+    <circle cx="372" cy="96" r="2.6" opacity=".9"/><circle cx="452" cy="42" r="1.8" opacity=".7"/>
+    <circle cx="496" cy="132" r="2.2" opacity=".8"/><circle cx="88" cy="150" r="1.7" opacity=".6"/>
+    <circle cx="248" cy="150" r="1.4" opacity=".55"/><circle cx="428" cy="180" r="1.6" opacity=".6"/>
+    <circle cx="30" cy="220" r="2" opacity=".7"/><circle cx="336" cy="18" r="2.2" opacity=".85"/>
+  </g>
+
+  <!-- auroras -->
+  <g fill="url(#aBeam)">
+    <path d="M60 0c30 90 6 170 46 250s24 150 60 250H60C24 400 30 330 6 250S30 90 0 0z"/>
+    <path d="M250 0c26 80 0 150 34 226s18 140 46 224h-58c-30-84-34-150-58-224s-8-146-34-226z" opacity=".75"/>
+    <path d="M430 0c24 74 4 140 30 210s16 132 40 214h-52c-26-82-30-140-52-214s-4-136-26-210z" opacity=".6"/>
+  </g>
+  <circle cx="300" cy="180" r="170" fill="url(#aGlow)"/>
+
+  <!-- planeta -->
+  <circle cx="366" cy="132" r="74" fill="url(#aPlanet)"/>
+  <path d="M304 108a74 74 0 0 0 108 62 74 74 0 0 1-108-62z" fill="#6C5730" opacity=".55"/>
+  <ellipse cx="366" cy="132" rx="112" ry="26" fill="none" stroke="#E9D9A6" stroke-width="7" opacity=".5" transform="rotate(-16 366 132)"/>
+
+  <!-- montanhas -->
+  <g fill="#071326">
+    <path d="M0 500V368l96-84 62 66 74-96 96 118 68-58 124 86v100z"/>
+  </g>
+  <g fill="#0C1D36" opacity=".9">
+    <path d="M0 500v-84l120-70 84 84 70-58 108 74 76-40 62 30v64z"/>
+  </g>
+
+  <!-- vela / nave -->
+  <g fill="#030710">
+    <path d="M214 244h10l6 34h-22z"/>
+    <path d="M226 226c14 4 22 14 24 30l-30-6z"/>
+    <path d="m206 300 8 54 14-8-4-46z"/>
+    <path d="m242 300-6 54-14-8 4-46z"/>
+    <path d="M198 356h58l-8 16h-42z"/>
+  </g>
+  <path d="M222 214v-42" stroke="#8FF3E1" stroke-width="5" stroke-linecap="round"/>
+  <path d="M222 176l26 14-26 12z" fill="#8FF3E1"/>
+</svg>

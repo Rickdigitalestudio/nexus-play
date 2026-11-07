@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="fBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFD06A"/>
+      <stop offset=".5" stop-color="#F2823C"/>
+      <stop offset="1" stop-color="#B3312B"/>
+    </linearGradient>
+    <radialGradient id="fSun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFF0B8"/>
+      <stop offset=".6" stop-color="#FFD06A" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#FFD06A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="fGround" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7E2222"/>
+      <stop offset="1" stop-color="#4A1114"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="256" height="256" fill="url(#fBg)"/>
+  <circle cx="128" cy="92" r="72" fill="url(#fSun)"/>
+  <circle cx="128" cy="92" r="34" fill="#FFEBAF"/>
+
+  <!-- nuvens de poeira -->
+  <g fill="#FFE3A6" opacity=".35">
+    <ellipse cx="52" cy="58" rx="38" ry="12"/>
+    <ellipse cx="206" cy="46" rx="32" ry="10"/>
+    <ellipse cx="188" cy="128" rx="44" ry="12"/>
+  </g>
+
+  <!-- mesas / montanhas -->
+  <path d="M0 164h44v-30h34v30h30v-46h50v46h40v-24h58v66H0z" fill="#7C211F" opacity=".85"/>
+  <path d="M0 186h68v-24h44v24h50v-34h48v34h46v70H0z" fill="#571315"/>
+
+  <!-- solo -->
+  <path d="M0 204h256v52H0z" fill="url(#fGround)"/>
+
+  <!-- cavaleiro -->
+  <g fill="#2A0A0C">
+    <path d="M96 176c14-6 30-6 44 0l6 22-10 4-6-10-4 22h-18l-4-22-6 10-10-4z"/>
+    <path d="M138 190c14 2 26 10 32 22l10 20-10 6-12-18-14-6z"/>
+    <path d="M96 178c-8-4-14-12-14-22 0-10 8-18 18-18 8 0 14 4 17 10l-8 4c-2-3-5-5-9-5-5 0-8 4-8 9s4 8 9 8c4 0 7-2 9-5l6 6c-4 4-10 7-20 7z"/>
+    <path d="M104 158l-6-24 8-2 8 22z"/>
+    <path d="M118 214h8l-4 24h-8zM138 214h8l6 24h-8z"/>
+  </g>
+  <!-- laço da banda -->
+  <path d="M100 134c-12 4-22 12-26 22 8-6 16-9 24-9z" fill="#F4C93F"/>
+
+  <!-- poeira -->
+  <g fill="#FFD9A0" opacity=".6">
+    <circle cx="70" cy="216" r="4"/><circle cx="52" cy="230" r="3"/><circle cx="88" cy="234" r="3"/>
+  </g>
+</svg>

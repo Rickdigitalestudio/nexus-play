@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 500" width="520" height="500">
+  <defs>
+    <linearGradient id="rSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#16413A"/>
+      <stop offset=".55" stop-color="#0E2A2A"/>
+      <stop offset="1" stop-color="#08171B"/>
+    </linearGradient>
+    <radialGradient id="rSun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFE2A0" stop-opacity=".9"/>
+      <stop offset=".55" stop-color="#F5A93F" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#F5A93F" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="rTorch" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFF1C4"/>
+      <stop offset=".45" stop-color="#FFB64A" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#FF9A2E" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rRay" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFDE9B" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#FFDE9B" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="rGround" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0B2123"/>
+      <stop offset="1" stop-color="#050F12"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="520" height="500" fill="url(#rSky)"/>
+  <circle cx="330" cy="140" r="190" fill="url(#rSun)"/>
+
+  <!-- raios de luz -->
+  <path d="M150 0 40 330l70 10z" fill="url(#rRay)" opacity=".55"/>
+  <path d="M250 0 180 300l60 8z" fill="url(#rRay)" opacity=".4"/>
+  <path d="M360 0 330 280l54 6z" fill="url(#rRay)" opacity=".35"/>
+
+  <!-- ruínas: colunas e arco -->
+  <g fill="#0A1F22">
+    <rect x="30" y="120" width="54" height="330"/>
+    <rect x="24" y="104" width="66" height="26" rx="6"/>
+    <rect x="436" y="90" width="56" height="360"/>
+    <rect x="430" y="72" width="68" height="26" rx="6"/>
+    <path d="M84 150c0-96 76-170 170-170s170 74 170 170h-44c0-72-56-128-126-128S128 78 128 150z"/>
+    <rect x="120" y="330" width="60" height="120"/>
+    <rect x="348" y="316" width="62" height="134"/>
+  </g>
+  <g fill="#123437">
+    <rect x="42" y="150" width="14" height="300"/>
+    <rect x="446" y="130" width="14" height="320"/>
+  </g>
+  <!-- cantos dourados nas ruínas -->
+  <g fill="#C98A34" opacity=".65">
+    <rect x="30" y="120" width="54" height="8"/>
+    <rect x="436" y="90" width="56" height="8"/>
+    <rect x="120" y="330" width="60" height="7"/>
+    <rect x="348" y="316" width="62" height="7"/>
+  </g>
+
+  <!-- solo -->
+  <path d="M0 404h520v96H0z" fill="url(#rGround)"/>
+  <path d="M0 404h520v10H0z" fill="#16403F" opacity=".7"/>
+
+  <!-- aventureira com tocha -->
+  <circle cx="266" cy="252" r="96" fill="url(#rTorch)"/>
+  <g fill="#04100F">
+    <circle cx="252" cy="266" r="26"/>
+    <path d="M226 296c16-12 38-12 54 2l16 74-30 16-14-38-8 112h-56l6-118-22 40-26-18z"/>
+    <path d="m302 306 44-56 20 16-44 60z"/>
+    <path d="m226 402-18 98h26l16-88 14 88h26l-10-104z"/>
+  </g>
+  <!-- tocha -->
+  <g>
+    <rect x="342" y="228" width="14" height="52" rx="6" transform="rotate(24 349 254)" fill="#3A2414"/>
+    <circle cx="358" cy="222" r="34" fill="url(#rTorch)"/>
+    <path d="M358 196c10 12 14 22 10 32-4 10-14 14-22 8-8-6-8-18 2-30-2 12 4 18 10 16z" fill="#FFD06A"/>
+  </g>
+  <!-- braço -->
+  <path d="M270 316c14-6 30-14 44-24" stroke="#04100F" stroke-width="24" stroke-linecap="round" fill="none"/>
+
+  <!-- partículas -->
+  <g fill="#FFD48A">
+    <circle cx="180" cy="210" r="3.5" opacity=".8"/>
+    <circle cx="330" cy="150" r="3" opacity=".7"/>
+    <circle cx="404" cy="240" r="4" opacity=".6"/>
+    <circle cx="140" cy="300" r="3" opacity=".55"/>
+    <circle cx="368" cy="330" r="3" opacity=".5"/>
+    <circle cx="96" cy="248" r="2.5" opacity=".5"/>
+  </g>
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 500" width="520" height="500">
+  <defs>
+    <linearGradient id="nBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0E3A4A"/>
+      <stop offset=".55" stop-color="#09222E"/>
+      <stop offset="1" stop-color="#041016"/>
+    </linearGradient>
+    <radialGradient id="nMoon" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#DFF6FF" stop-opacity=".9"/>
+      <stop offset=".45" stop-color="#9FE0F0" stop-opacity=".3"/>
+      <stop offset="1" stop-color="#9FE0F0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="nRidge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#12495C"/>
+      <stop offset="1" stop-color="#0A2B38"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="520" height="500" fill="url(#nBg)"/>
+
+  <!-- estrelas + lua -->
+  <g fill="#CFEFF8">
+    <circle cx="70" cy="60" r="2" opacity=".8"/><circle cx="140" cy="110" r="1.4" opacity=".6"/>
+    <circle cx="300" cy="44" r="1.6" opacity=".7"/><circle cx="470" cy="90" r="2" opacity=".8"/>
+    <circle cx="410" cy="180" r="1.3" opacity=".5"/><circle cx="30" cy="150" r="1.5" opacity=".6"/>
+  </g>
+  <circle cx="384" cy="120" r="140" fill="url(#nMoon)"/>
+  <circle cx="384" cy="120" r="52" fill="#EAF9FF"/>
+  <circle cx="402" cy="106" r="9" fill="#CBE9F2" opacity=".7"/>
+  <circle cx="368" cy="136" r="6" fill="#CBE9F2" opacity=".6"/>
+
+  <!-- montanhas -->
+  <path d="M0 500V300l110-120 90 96 78-88 116 128 66-60 60 56v188z" fill="url(#nRidge)"/>
+  <path d="m110 180 26 28-18 8-14-20-16 26-14-8z" fill="#BFE8F4" opacity=".85"/>
+  <path d="m278 188 22 24-16 6-12-16-12 20-12-6z" fill="#BFE8F4" opacity=".7"/>
+  <path d="M0 500v-96l140-64 100 74 84-52 116 68 80-32v102z" fill="#061A23"/>
+
+  <!-- corda-ponte -->
+  <g stroke="#D9F2FA" stroke-width="4" fill="none" opacity=".9">
+    <path d="M96 322q130 64 250 8"/>
+    <path d="M96 300q130 64 250 8"/>
+  </g>
+  <g stroke="#8FC9DA" stroke-width="3" opacity=".8">
+    <path d="M126 316v14M166 326v16M206 332v16M246 332v16M286 328v14M322 320v12"/>
+  </g>
+  <!-- viajantes -->
+  <g fill="#03141B">
+    <circle cx="196" cy="336" r="8"/>
+    <path d="M189 348c6-4 14-4 18 0l4 22-8 4-3-10-1 24h-10l-1-26-6 12-8-6z"/>
+    <circle cx="228" cy="340" r="7"/>
+    <path d="M222 350c5-3 12-3 16 0l3 18-6 3-3-8v20h-9l-1-22-5 10-7-5z"/>
+  </g>
+  <path d="M204 348h16" stroke="#03141B" stroke-width="4"/>
+</svg>

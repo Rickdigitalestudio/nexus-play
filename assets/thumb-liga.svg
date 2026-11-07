@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="lBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3EC46A"/>
+      <stop offset=".6" stop-color="#1E9148"/>
+      <stop offset="1" stop-color="#0E6231"/>
+    </linearGradient>
+    <linearGradient id="lBeam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F6FFE9" stop-opacity=".75"/>
+      <stop offset="1" stop-color="#F6FFE9" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="256" height="256" fill="url(#lBg)"/>
+
+  <!-- holofotes -->
+  <path d="M40 0 0 190l70 0z" fill="url(#lBeam)" opacity=".5"/>
+  <path d="M210 0 176 190l74 0z" fill="url(#lBeam)" opacity=".45"/>
+
+  <!-- gramado com linhas -->
+  <g stroke="#EAFBF0" stroke-width="5" fill="none" opacity=".55">
+    <path d="M0 178h256"/>
+    <circle cx="128" cy="212" r="40"/>
+    <path d="M128 178v78"/>
+  </g>
+  <g stroke="#0C5B2E" stroke-width="14" opacity=".18">
+    <path d="M0 200h256"/>
+  </g>
+
+  <!-- jogador -->
+  <g fill="#0B2E1B">
+    <circle cx="96" cy="86" r="16"/>
+    <path d="M80 104c10-6 24-6 34 0l8 34-16 8-6-18-4 34h-18l-2-36-14 16-12-12z"/>
+    <path d="m76 158-24 26 12 12 28-24z"/>
+    <path d="m114 162 26 20-10 14-30-18z"/>
+    <path d="m96 166-4 46h16l4-46z"/>
+  </g>
+  <!-- braço da camisa -->
+  <path d="M84 110c10-6 20-6 28 0" stroke="#8FE6A8" stroke-width="7" fill="none" stroke-linecap="round"/>
+
+  <!-- bola -->
+  <circle cx="156" cy="186" r="24" fill="#FFFFFF"/>
+  <path d="m156 170 10 8-4 12h-12l-4-12z" fill="#16241C"/>
+  <path d="m136 184 6-6 8 4M176 184l-6-6-8 4M150 208l4-10M164 208l-4-10" stroke="#16241C" stroke-width="4" fill="none"/>
+  <ellipse cx="150" cy="216" rx="30" ry="8" fill="#073F20" opacity=".45"/>
+</svg>

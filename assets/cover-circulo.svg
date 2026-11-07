@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 500" width="520" height="500">
+  <defs>
+    <linearGradient id="cBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3A0A14"/>
+      <stop offset=".5" stop-color="#1C0509"/>
+      <stop offset="1" stop-color="#0A0204"/>
+    </linearGradient>
+    <radialGradient id="cHalo" cx=".5" cy=".5" r=".5">
+      <stop offset=".55" stop-color="#E8404A" stop-opacity="0"/>
+      <stop offset=".72" stop-color="#E8404A" stop-opacity=".55"/>
+      <stop offset=".86" stop-color="#FF7A5C" stop-opacity=".25"/>
+      <stop offset="1" stop-color="#E8404A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cRing" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFC98A"/>
+      <stop offset=".5" stop-color="#E8404A"/>
+      <stop offset="1" stop-color="#7A1430"/>
+    </linearGradient>
+    <linearGradient id="cHill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#170306"/>
+      <stop offset="1" stop-color="#050102"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="520" height="500" fill="url(#cBg)"/>
+
+  <!-- eclipse -->
+  <circle cx="260" cy="196" r="200" fill="url(#cHalo)"/>
+  <circle cx="260" cy="196" r="150" fill="none" stroke="url(#cRing)" stroke-width="16"/>
+  <circle cx="260" cy="196" r="136" fill="#120305"/>
+  <circle cx="260" cy="196" r="150" fill="none" stroke="#FFD3A8" stroke-width="3" opacity=".45" stroke-dasharray="120 826" transform="rotate(-40 260 196)"/>
+
+  <!-- nuvens/brasas -->
+  <g fill="#5E0F1E" opacity=".6">
+    <ellipse cx="90" cy="120" rx="80" ry="18"/>
+    <ellipse cx="440" cy="96" rx="70" ry="16"/>
+    <ellipse cx="410" cy="300" rx="90" ry="20"/>
+  </g>
+
+  <!-- coluna/partículas -->
+  <g fill="#FF8A6A">
+    <circle cx="120" cy="260" r="4" opacity=".6"/>
+    <circle cx="392" cy="210" r="3.5" opacity=".55"/>
+    <circle cx="330" cy="330" r="4" opacity=".5"/>
+    <circle cx="160" cy="330" r="3" opacity=".45"/>
+    <circle cx="454" cy="248" r="3" opacity=".45"/>
+    <circle cx="64" cy="200" r="3" opacity=".4"/>
+  </g>
+
+  <!-- colina -->
+  <path d="M0 500V414c60-46 140-70 260-70s200 24 260 70v86z" fill="url(#cHill)"/>
+
+  <!-- cavaleiro -->
+  <g fill="#050102">
+    <circle cx="260" cy="304" r="20"/>
+    <path d="M244 288c0-14 7-24 16-24s16 10 16 24l-6 6h-20z"/>
+    <path d="M232 326c16-12 40-12 56 0l10 46-20 10-8-24-6 62h-36l-6-62-8 24-20-10z"/>
+    <path d="m296 330 34-40 14 12-34 44z"/>
+    <path d="M330 286l6-58 12 2-4 58z"/>
+    <path d="M330 236c8 0 14 6 14 14h-28c0-8 6-14 14-14z"/>
+    <path d="M234 372h20l-8 56h-20zM270 372h20l10 56h-20z"/>
+  </g>
+  <!-- brilho da lâmina -->
+  <path d="M336 244l4-52" stroke="#FFD9C4" stroke-width="4" stroke-linecap="round" opacity=".8"/>
+</svg>

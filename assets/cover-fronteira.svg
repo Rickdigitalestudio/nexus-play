@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 500" width="520" height="500">
+  <defs>
+    <linearGradient id="fBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8A4A14"/>
+      <stop offset=".5" stop-color="#5A2C0C"/>
+      <stop offset="1" stop-color="#201004"/>
+    </linearGradient>
+    <radialGradient id="fSun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FFE3A6" stop-opacity=".95"/>
+      <stop offset=".55" stop-color="#FFB64D" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#FFB64D" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="fDune" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7A3E12"/>
+      <stop offset="1" stop-color="#40200A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="520" height="500" fill="url(#fBg)"/>
+
+  <!-- sol -->
+  <circle cx="352" cy="150" r="180" fill="url(#fSun)"/>
+  <circle cx="352" cy="150" r="74" fill="#FFDDA0"/>
+  <g stroke="#C97A2E" stroke-width="6" opacity=".5">
+    <path d="M280 128h144"/><path d="M286 152h132"/><path d="M296 176h112"/>
+  </g>
+
+  <!-- pássaros -->
+  <g stroke="#2A1206" stroke-width="4" fill="none" stroke-linecap="round">
+    <path d="M110 110q10-10 20 0 10-10 20 0"/>
+    <path d="M170 84q7-7 14 0 7-7 14 0"/>
+  </g>
+
+  <!-- dunas -->
+  <path d="M0 500V330c90-50 170-30 260 10s170 30 260-20v180z" fill="url(#fDune)"/>
+  <path d="M0 500v-90c120-40 210 0 320 26s140 10 200-16v80z" fill="#2C1507"/>
+
+  <!-- cactos / torres -->
+  <g fill="#170A03">
+    <path d="M118 420V300c0-10 16-10 16 0v22h14c8 0 8 14 0 14h-14v84z"/>
+    <path d="M100 342c-10 0-16-8-10-16l10-14v42z"/>
+    <path d="M406 430V330c0-8 14-8 14 0v18h12c7 0 7 12 0 12h-12v70z"/>
+    <rect x="252" y="352" width="10" height="80" rx="4"/>
+    <path d="M238 372h38l-8 10h-22z"/>
+  </g>
+
+  <!-- carro/cavaleiro em silhueta -->
+  <g fill="#0C0502">
+    <path d="M296 452c-4-14 2-26 16-30l18-4c10-2 18 4 20 14l10 4c6 2 8 8 6 14l-4 10h-64z"/>
+    <circle cx="316" cy="464" r="12"/><circle cx="360" cy="464" r="12"/>
+    <circle cx="316" cy="464" r="5" fill="#4A2408"/><circle cx="360" cy="464" r="5" fill="#4A2408"/>
+    <path d="M330 420c0-8 6-14 14-14s12 6 12 12l-6 10z"/>
+    <circle cx="344" cy="398" r="9"/>
+  </g>
+  <!-- poeira -->
+  <g fill="#C98A46" opacity=".5">
+    <circle cx="272" cy="462" r="7"/><circle cx="252" cy="470" r="5"/><circle cx="234" cy="476" r="4"/>
+    <circle cx="218" cy="480" r="3"/><circle cx="286" cy="474" r="4"/>
+  </g>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 500" width="520" height="500">
+  <defs>
+    <linearGradient id="tBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#123B3A"/>
+      <stop offset=".55" stop-color="#0A2426"/>
+      <stop offset="1" stop-color="#051214"/>
+    </linearGradient>
+    <radialGradient id="tFlash" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#CFFCF2" stop-opacity=".85"/>
+      <stop offset=".55" stop-color="#5FE0C8" stop-opacity=".3"/>
+      <stop offset="1" stop-color="#5FE0C8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="tHill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0E3132"/>
+      <stop offset="1" stop-color="#071C1E"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="520" height="500" fill="url(#tBg)"/>
+
+  <!-- relâmpago -->
+  <circle cx="268" cy="150" r="160" fill="url(#tFlash)"/>
+  <path d="M296 24 172 244h74l-42 132 138-172h-80l74-118z" fill="#EAFFFB"/>
+  <path d="M300 52 196 236h60l-34 112 112-144h-64l62-104z" fill="#6FF0DA" opacity=".85"/>
+
+  <!-- nuvens -->
+  <g fill="#0B2A2B">
+    <path d="M0 96c46-34 92-14 118 8 20-38 76-44 104-10 30-24 76-16 92 18 40-16 84 4 96 40H0z"/>
+  </g>
+  <g fill="#0E3435" opacity=".8">
+    <path d="M180 40c40-26 84-8 104 16 22-30 66-32 90-4 26-14 60-4 74 24 30-8 56 6 66 30H160c-4-28 4-52 20-66z"/>
+  </g>
+
+  <!-- montanhas -->
+  <path d="M0 500V340l90-70 62 52 84-110 96 122 74-64 114 78v152z" fill="url(#tHill)"/>
+  <path d="m236 212 28 36-18 6-12-18-16 24-14-8z" fill="#D9FFF6" opacity=".8"/>
+  <path d="M0 500v-96l130-58 96 76 82-52 112 74 100-40v96z" fill="#07191B"/>
+
+  <!-- árvore em destaque -->
+  <g fill="#030D0E">
+    <path d="M120 500v-96h14v96z"/>
+    <path d="M127 318c30 22 46 52 46 88-34-6-64-30-78-62 14-14 22-20 32-26z"/>
+    <path d="M127 366c26 16 40 42 40 74-30-4-56-26-68-54 14-10 18-14 28-20z" opacity=".9"/>
+  </g>
+  <path d="M127 330 96 372" stroke="#030D0E" stroke-width="14" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus Play &#8212; Seu hub central de jogos</title>
+<meta name="description" content="Nexus Play re&#250;ne jogos em destaque, loja, biblioteca, downloads, estat&#237;sticas, amigos e chat em um &#250;nico hub premium 3D para gamers.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23F5EAEC'/%3E%3Cpath d='M18 48V16h7l14 19V16h7v32h-7L25 29v19z' fill='%233B1420'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/interactive.css">
+</head>
+<body>
+
+<!-- ============================= LOGIN SCREEN ============================= -->
+<div class="login-screen" id="loginScreen">
+  <canvas class="login-stars" id="loginStars" aria-hidden="true"></canvas>
+  <div class="login-card" id="loginCard">
+    <div class="login-logo">
+      <svg viewBox="0 0 64 64" width="64" height="64"><rect width="64" height="64" rx="16" fill="#F5EAEC"/><path d="M18 48V16h7l14 19V16h7v32h-7L25 29v19z" fill="#3B1420"/></svg>
+    </div>
+    <h1 class="login-title">Nexus Play</h1>
+    <p class="login-sub">Entre na sua conta para continuar</p>
+    <form class="login-form" id="loginForm" autocomplete="off">
+      <div class="login-field">
+        <label for="loginName">Nome do jogador</label>
+        <input type="text" id="loginName" placeholder="Digite seu nome..." maxlength="20" required>
+      </div>
+      <div class="login-field">
+        <label for="loginPass">Senha</label>
+        <input type="password" id="loginPass" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;" required>
+      </div>
+      <button class="btn btn-primary login-btn" type="submit">
+        <svg class="i i-sm"><use href="#ic-play"/></svg> Entrar no Nexus
+      </button>
+    </form>
+    <div class="login-hint">
+      <span>Novo por aqui?</span>
+      <a href="#" id="loginGuest">Jogar como convidado</a>
+    </div>
+  </div>
+</div>
+
+<div class="errlog" id="errlog" role="alert" hidden></div>
+
+<!-- ============================= SPRITE (&#237;cones + avatares) ============================= -->
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
+  <defs>
+    <linearGradient id="avb1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3FD0C9"/><stop offset="1" stop-color="#1C6E8C"/></linearGradient>
+    <linearGradient id="avb2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFB347"/><stop offset="1" stop-color="#E4622F"/></linearGradient>
+    <linearGradient id="avb3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B07BF0"/><stop offset="1" stop-color="#6A2FA8"/></linearGradient>
+    <linearGradient id="avb4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8FE07A"/><stop offset="1" stop-color="#2F8F5B"/></linearGradient>
+    <linearGradient id="avb5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF7A8A"/><stop offset="1" stop-color="#B4243D"/></linearGradient>
+    <linearGradient id="avb6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6FA8FF"/><stop offset="1" stop-color="#2B3F9E"/></linearGradient>
+    <linearGradient id="avb7" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFD86B"/><stop offset="1" stop-color="#E48F2B"/></linearGradient>
+    <linearGradient id="avb8" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF9ED2"/><stop offset="1" stop-color="#B03A8E"/></linearGradient>
+    <linearGradient id="avb9" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6BE3F0"/><stop offset="1" stop-color="#2563A9"/></linearGradient>
+    <linearGradient id="avb10" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A78BFA"/><stop offset="1" stop-color="#5B21B6"/></linearGradient>
+    <linearGradient id="avb11" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5EE0A8"/><stop offset="1" stop-color="#1F7A62"/></linearGradient>
+    <linearGradient id="avb12" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F0A8FF"/><stop offset="1" stop-color="#8E3AA8"/></linearGradient>
+  </defs>
+
+  <!-- &#237;cones (line, 24x24) -->
+  <symbol id="ic-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.6 10.6 12 3.7l8.4 6.9"/><path d="M6 9.7V20h12V9.7"/><path d="M10 20v-5h4v5"/></symbol>
+  <symbol id="ic-gamepad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8.2 7.5h7.6a5 5 0 0 1 4.9 4v1.6a3.4 3.4 0 0 1-6.2 1.9l-.6-.9H10l-.6.9A3.4 3.4 0 0 1 3.2 13V11.5a5 5 0 0 1 5-4z"/><path d="M7 12.4h3M8.5 10.9v3"/><path d="M15.9 12.2h.01M17.8 14h.01" stroke-width="2.2"/></symbol>
+  <symbol id="ic-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5.8 8h12.4l1 12H4.8l1-12z"/><path d="M9 10.2V7a3 3 0 0 1 6 0v3.2"/></symbol>
+  <symbol id="ic-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.2" y="4.8" width="17.6" height="11.4" rx="2.2"/><path d="M9 19.8h6M12 16.2v3.6"/></symbol>
+  <symbol id="ic-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.8v9.8"/><path d="m8 10.2 4 4 4-4"/><path d="M4.8 19.6h14.4"/></symbol>
+  <symbol id="ic-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.6V12"/><path d="M10 19.6V6.6"/><path d="M15 19.6v-5.4"/><path d="M20 19.6V9.2"/></symbol>
+  <symbol id="ic-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.2" cy="8" r="3.3"/><path d="M3.2 19.6c0-3.3 2.7-5.6 6-5.6s6 2.3 6 5.6"/><path d="M16.2 5.2a3.3 3.3 0 0 1 0 5.7"/><path d="M17.6 14.4c1.9.8 3.2 2.6 3.2 5.2"/></symbol>
+  <symbol id="ic-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 12.2c0 3.9-3.7 7-8.2 7-1 0-2-.2-2.9-.5L4.8 20.4l1.4-3.3a6.5 6.5 0 0 1-2.4-4.9c0-3.9 3.7-7 8.2-7s8.2 3.1 8.2 7z"/></symbol>
+  <symbol id="ic-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.2"/><path d="m15.6 15.6 4.4 4.4"/></symbol>
+  <symbol id="ic-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 4.6h2.1l2.3 9.8h9.1l1.9-6.7H6.4"/><circle cx="9.6" cy="18.4" r="1.5"/><circle cx="16.6" cy="18.4" r="1.5"/></symbol>
+  <symbol id="ic-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.2a5.4 5.4 0 0 0-5.4 5.4c0 4.4-1.5 5.5-2 6.5h14.8c-.5-1-2-2.1-2-6.5A5.4 5.4 0 0 0 12 4.2z"/><path d="M10 19.4a2.2 2.2 0 0 0 4 0"/></symbol>
+  <symbol id="ic-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m9.6 5.6 6.4 6.4-6.4 6.4"/></symbol>
+  <symbol id="ic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 12h14"/><path d="m12.8 6 6 6-6 6"/></symbol>
+  <symbol id="ic-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19.2 12h-14"/><path d="m11.2 18-6-6 6-6"/></symbol>
+  <symbol id="ic-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.8v12.4M5.8 12h12.4"/></symbol>
+  <symbol id="ic-play" viewBox="0 0 24 24"><path d="M8.4 5.6v12.8L19 12z" fill="currentColor"/></symbol>
+  <symbol id="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6.8 6.8 10.4 10.4M17.2 6.8 6.8 17.2"/></symbol>
+  <symbol id="ic-thumb" viewBox="0 0 24 24"><path d="M6.9 10.4 11 3.2a2.2 2.2 0 0 1 3 2l-.8 4.6h4.9a2.1 2.1 0 0 1 2 2.6l-1.4 5.6a2.4 2.4 0 0 1-2.3 1.8H6.9v-9.4zM3.4 10.4h3.5v9.4H3.4z" fill="currentColor"/></symbol>
+  <symbol id="ic-flame" viewBox="0 0 24 24"><path d="M13.2 2.2c.5 2.8-.8 4.5-2.3 6C9.4 9.7 7.9 11.2 7.9 13.6a4.4 4.4 0 0 0 8.8 0c0-2.8-1.6-4.5-2.5-6.4-.5 1.3-1.3 2.1-2.3 2.6 1-2.5 1.3-5 1.3-7.6z" fill="currentColor"/></symbol>
+  <symbol id="ic-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7.6 18.6a4.4 4.4 0 0 1-.5-8.8 5.5 5.5 0 0 1 10.6 1.3 3.8 3.8 0 0 1-.6 7.5H7.6z"/></symbol>
+  <symbol id="ic-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="M12 7.4V12l3.2 2"/></symbol>
+  <symbol id="ic-pause" viewBox="0 0 24 24"><path d="M7.8 5.4h3.4v13.2H7.8zM12.8 5.4h3.4v13.2h-3.4z" fill="currentColor"/></symbol>
+  <symbol id="ic-heart" viewBox="0 0 24 24"><path d="M12 20.4l-7.5-7.2a4.75 4.75 0 1 1 6.8-6.7l.7.7.7-.7a4.75 4.75 0 1 1 6.8 6.7z"/></symbol>
+  <symbol id="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5.6 12.6 4.3 4.3 8.5-9.6"/></symbol>
+  <symbol id="ic-palette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.8a8.2 8.2 0 1 0 0 16.4c1.1 0 1.8-.8 1.8-1.7 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.1 0-1 .8-1.7 1.7-1.7h1.4a4.3 4.3 0 0 0 4.3-4.3c0-3.4-3.7-6.4-8.2-6.4z"/><circle cx="8" cy="10.6" r="1.1" fill="currentColor" stroke="none"/><circle cx="11.6" cy="7.6" r="1.1" fill="currentColor" stroke="none"/><circle cx="15.8" cy="9" r="1.1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="ic-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7.6 4.4h8.8v5a4.4 4.4 0 0 1-8.8 0v-5z"/><path d="M7.6 6H4.8v1.4a3.4 3.4 0 0 0 2.9 3.4M16.4 6h2.8v1.4a3.4 3.4 0 0 1-2.9 3.4"/><path d="M12 13.8v3.4M9 20.2h6M10 17.2h4l.6 3h-5.2l.6-3z"/></symbol>
+  <symbol id="ic-star" viewBox="0 0 24 24"><path d="m12 3.8 2.5 5.2 5.7.8-4.1 4 1 5.6L12 16.8l-5.1 2.6 1-5.6-4.1-4 5.7-.8z" fill="currentColor"/></symbol>
+  <symbol id="ic-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 3.6 3.8 10.2l6.6 2.8 2.8 6.8z"/><path d="M20.4 3.6 10.4 13"/></symbol>
+  <symbol id="ic-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19.4 12a7.4 7.4 0 1 1-2.2-5.2"/><path d="M19.6 3.8v4h-4"/></symbol>
+  <symbol id="ic-gauge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.4 18.4a8.8 8.8 0 1 1 15.2 0"/><path d="m12 14 4-4.6"/><circle cx="12" cy="14.4" r="1.6"/></symbol>
+  <symbol id="ic-package" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.4 8 4v9.2l-8 4-8-4V7.4z"/><path d="m4 7.4 8 4 8-4M12 11.4v9.2"/></symbol>
+  <symbol id="ic-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="6.6" height="6.6" rx="1.6"/><rect x="13.4" y="4" width="6.6" height="6.6" rx="1.6"/><rect x="4" y="13.4" width="6.6" height="6.6" rx="1.6"/><rect x="13.4" y="13.4" width="6.6" height="6.6" rx="1.6"/></symbol>
+  <symbol id="ic-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8.6 6h11.4M8.6 12h11.4M8.6 18h11.4"/><circle cx="4.6" cy="6" r="1.1" fill="currentColor" stroke="none"/><circle cx="4.6" cy="12" r="1.1" fill="currentColor" stroke="none"/><circle cx="4.6" cy="18" r="1.1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="ic-user-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.6" cy="8.2" r="3.4"/><path d="M3.4 19.8c0-3.4 2.8-5.8 6.2-5.8 1.4 0 2.7.4 3.8 1.1"/><path d="M17.4 13.6v5.6M14.6 16.4h5.6"/></symbol>
+
+  <!-- avatares (64x64) -->
+  <symbol id="av1" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="url(#avb1)"/><path d="M8 64c1.8-13.4 11.4-21 24-21s22.2 7.6 24 21H8z" fill="#26313F"/><circle cx="32" cy="27" r="13" fill="#E9B489"/><path d="M19 27c0-8.3 5.8-14 13-14s13 5.7 13 14c0 0-4.2-6.2-13-6.2S19 27 19 27z" fill="#241A15"/><path d="M19.5 28a12.5 12.5 0 0 1 25 0" fill="none" stroke="#15111B" stroke-width="4"/><rect x="14.5" y="25" width="8" height="12" rx="4" fill="#15111B"/><rect x="41.5" y="25" width="8" height="12" rx="4" fill="#15111B"/></symbol>
+  <symbol id="av2" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="url(#avb2)"/><path d="M8 64c1.8-13.4 11.4-21 24-21s22.2 7.6 24 21H8z" fill="#2B2437"/><circle cx="32" cy="28" r="13" fill="#C68B5E"/><path d="M19.5 25c0-7.6 5.6-12.5 12.5-12.5S44.5 17.4 44.5 25l-4-3.6c-4 2.4-13.4 2.6-17.4.4z" fill="#1F3A55"/><path d="M18 24.5h27v3.6H18z" fill="#17304A"/><path d="M45 24.5h6.5c1.4 0 2.5 1 2.5 2.3s-1.1 2.3-2.5 2.3H45z" fill="#17304A"/></symbol>
+  <symbol id="av3" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="url(#avb3)"/><path d="M6 64c2-15 12.6-23 26-23s24 8 26 23H6z" fill="#3A2159"/><circle cx="32" cy="28" r="12" fill="#8D5A3B"/><path d="M18.5 30c0-9.6 6.2-16 13.5-16s13.5 6.4 13.5 16c-3.6-5-8-7.4-13.5-7.4S22.1 25 18.5 30z" fill="#2A1742"/><path d="M24 33.6c2.4 2.4 5 3.6 8 3.6s5.6-1.2 8-3.6" fill="none" stroke="#2A1742" stroke-width="2.6" stroke-linecap="round"/></symbol>
+  <symbol id="av4" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="url(#avb4)"/><path d="M8 64c1.8-13.4 11.4-21 24-21s22.2 7.6 24 21H8z" fill="#20303A"/><circle cx="32" cy="27" r="13" fill="#E8B48C"/><path d="M20 26c0-7.6 5.4-13 12-13s12 5.4 12 13c0 0-3.6-5.6-12-5.6S20 26 20 26z" fill="#3B2418"/><path d="M26 34.4c1.8 2.6 4 4 6 4s4.2-1.4 6-4" fill="none" stroke="#3B2418" stroke-width="3" stroke-linecap="round"/><path d="M18.6 46.4c3.8 3.6 8.4 5.4 13.4 5.4s9.6-1.8 13.4-5.4" fill="none" stroke="#3B2418" stroke-width="3" stroke-linecap="round" opacity=".55"/></symbol>
+  <symbol id="av5" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="url(#avb5)"/><path d="M8 64c1.8-13.4 11.4-21 24-21s22.2 7.6 24 21H8z" fill="#3A1B2A"/><circle cx="32" cy="29" r="13" fill="#F1C7A3"/><path d="M20 25.6c1-7 5.6-11.4 12-11.4s11 4.4 12 11.4c-3-3.6-6.6-5.2-12-5.2s-9 1.6-12 5.2z" fill="#E8404A"/><path d="M27.5 16.4 31 6l3 6.6 4.5-4-1.4 8.6z" fill="#E8404A"/><path d="M25 34.5h5M34 34.5h5" stroke="#3A1B2A" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="av6" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="url(#avb6)"/><path d="M8 64c1.8-13.4 11.4-21 24-21s22.2 7.6 24 21H8z" fill="#1E2A52"/><path d="M32 11c8.8 0 15.4 7 15.4 16.4V40H16.6V27.4C16.6 18 23.2 11 32 11z" fill="#2F3F7A"/><path d="M19.6 24.4h24.8v8.4H19.6z" fill="#101A38"/><path d="M22 27.6h14v2.6H22z" fill="#6FA8FF" opacity=".85"/><rect x="29" y="40" width="6" height="6" fill="#101A38"/></symbol>
+  <symbol id="av7" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="url(#avb7)"/><path d="M8 64c1.8-13.4 11.4-21 24-21s22.2 7.6 24 21H8z" fill="#2E2438"/><circle cx="32" cy="28" r="13" fill="#A66B45"/><path d="M19.5 27.4c0-8 5.6-13.8 12.5-13.8s12.5 5.8 12.5 13.8c0 0-4-5.8-12.5-5.8s-12.5 5.8-12.5 5.8z" fill="#1B1410"/><circle cx="45.6" cy="15.4" r="6.2" fill="#1B1410"/><path d="M25 36.4c2 2.4 4.4 3.6 7 3.6s5-1.2 7-3.6" fill="none" stroke="#1B1410" stroke-width="2.6" stroke-linecap="round"/></symbol>
+  <symbol id="av8" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="url(#avb8)"/><path d="M8 64c1.8-13.4 11.4-21 24-21s22.2 7.6 24 21H8z" fill="#4A1E44"/><circle cx="32" cy="28" r="12.6" fill="#EFC9A6"/><path d="M18.4 30.6c0-9.4 6-16.2 13.6-16.2s13.6 6.8 13.6 16.2c0 0-1.6-8-6-10.4-3.4 3.6-11.6 4.6-16.2 1.6-3.4 2.4-5 5.2-5 8.8z" fill="#5C2A1E"/><path d="M18.6 30c-1.4 6.6-.6 12 2 16.4-3.6-1.6-5.6-5.6-5.6-11.2 0-2 .6-3.8 1.6-5.2zM45.4 30c1.4 6.6.6 12-2 16.4 3.6-1.6 5.6-5.6 5.6-11.2 0-2-.6-3.8-1.6-5.2z" fill="#5C2A1E"/></symbol>
+  <symbol id="av9" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="url(#avb9)"/><path d="M8 64c1.8-13.4 11.4-21 24-21s22.2 7.6 24 21H8z" fill="#173247"/><circle cx="32" cy="27" r="13" fill="#C68B5E"/><path d="M19.4 26.4c0-8 5.8-13.6 12.6-13.6s12.6 5.6 12.6 13.6c0 0-4.4-5.6-12.6-5.6s-12.6 5.6-12.6 5.6z" fill="#16110F"/><rect x="18.4" y="23.6" width="27.2" height="8.4" rx="4.2" fill="#0F1B26"/><rect x="21" y="25.6" width="9" height="4.4" rx="2.2" fill="#6BE3F0"/><rect x="34" y="25.6" width="9" height="4.4" rx="2.2" fill="#6BE3F0"/></symbol>
+  <symbol id="av10" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="url(#avb10)"/><path d="M8 64c1.8-13.4 11.4-21 24-21s22.2 7.6 24 21H8z" fill="#2A1B4A"/><circle cx="32" cy="27" r="13" fill="#8D5A3B"/><path d="M19 27.6c0-8.4 5.8-14.2 13-14.2s13 5.8 13 14.2c0 0-4.4-6-13-6s-13 6-13 6z" fill="#17121F"/><path d="M24.4 34.8c2.2 4.4 4.8 6.6 7.6 6.6s5.4-2.2 7.6-6.6c1 4.8-.6 9-3.2 11.6H27.6c-2.6-2.6-4.2-6.8-3.2-11.6z" fill="#17121F"/><path d="M25.6 30.6h4.2M34.2 30.6h4.2" stroke="#17121F" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="av11" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="url(#avb11)"/><path d="M8 64c1.8-13.4 11.4-21 24-21s22.2 7.6 24 21H8z" fill="#1E3B33"/><circle cx="32" cy="28" r="13" fill="#D9A273"/><path d="M19 26.4c0-8.2 5.8-13.8 13-13.8s13 5.6 13 13.8c0 0-4.6-5.4-13-5.4s-13 5.4-13 5.4z" fill="#243019"/><path d="M24.6 34.6c2.2 3 4.8 4.4 7.4 4.4s5.2-1.4 7.4-4.4" fill="none" stroke="#243019" stroke-width="2.6" stroke-linecap="round"/><path d="M17.6 30.6c-2 4-2 8.6-.6 12.4l4.4-2.2zM46.4 30.6c2 4 2 8.6.6 12.4l-4.4-2.2z" fill="#243019"/></symbol>
+  <symbol id="av12" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="url(#avb12)"/><path d="M8 64c1.8-13.4 11.4-21 24-21s22.2 7.6 24 21H8z" fill="#43204E"/><circle cx="32" cy="27" r="12.6" fill="#F0C8A0"/><path d="M18.2 30c0-9.4 6.2-16.4 13.8-16.4S45.8 20.6 45.8 30c0 0-1.2-7.6-5.6-10.6-3.6 4-12.4 5-17.4 2-3.4 2.4-4.6 5.6-4.6 8.6z" fill="#3C1B52"/><path d="M18.4 30c-1.6 7-.6 12.6 2 17.2-3.8-1.8-6-6-6-11.6 0-2.2.8-4 2-5.6zM45.6 30c1.6 7.6 1 13-1.2 17.2 3.4-2.4 5.2-6.6 5.2-11.6 0-2-.6-4-1.8-5.6z" fill="#3C1B52"/></symbol>
+</svg>
+
+<div class="page">
+  <div class="app">
+
+    <!-- campo de estrelas 3D de fundo (proje&#231;&#227;o perspectiva em canvas) -->
+    <canvas class="stars" id="stars" aria-hidden="true"></canvas>
+
+    <!-- ============================= SIDEBAR ============================= -->
+    <nav class="sidebar" aria-label="Menu principal">
+      <a class="logo" href="#/inicio" aria-label="Nexus Play &#8212; in&#237;cio"><span aria-hidden="true">N</span></a>
+
+      <ul class="side-nav">
+        <li><a class="side-link is-active" href="#/inicio" data-view="inicio" aria-current="page"><svg class="i" aria-hidden="true"><use href="#ic-home"/></svg><span class="sr-only">In&#237;cio</span></a></li>
+        <li><a class="side-link" href="#/jogos" data-view="jogos"><svg class="i" aria-hidden="true"><use href="#ic-gamepad"/></svg><span class="sr-only">Jogos</span></a></li>
+        <li><a class="side-link" href="#/loja" data-view="loja"><svg class="i" aria-hidden="true"><use href="#ic-bag"/></svg><span class="sr-only">Loja</span></a></li>
+        <li><a class="side-link" href="#/biblioteca" data-view="biblioteca"><svg class="i" aria-hidden="true"><use href="#ic-monitor"/></svg><span class="sr-only">Biblioteca</span></a></li>
+        <li><a class="side-link" href="#/downloads" data-view="downloads"><svg class="i" aria-hidden="true"><use href="#ic-download"/></svg><span class="sr-only">Downloads</span></a></li>
+        <li><a class="side-link" href="#/estatisticas" data-view="estatisticas"><svg class="i" aria-hidden="true"><use href="#ic-chart"/></svg><span class="sr-only">Estat&#237;sticas</span></a></li>
+        <li><a class="side-link" href="#/amigos" data-view="amigos"><svg class="i" aria-hidden="true"><use href="#ic-users"/></svg><span class="sr-only">Amigos</span></a></li>
+        <li><a class="side-link" href="#/chat" data-view="chat"><svg class="i" aria-hidden="true"><use href="#ic-chat"/></svg><span class="sr-only">Chat</span></a></li>
+      </ul>
+
+      <div class="side-foot">
+        <span class="side-sep" aria-hidden="true"></span>
+        <button class="side-add" type="button" data-action="add" aria-label="Adicionar jogo"><svg class="i" aria-hidden="true"><use href="#ic-plus"/></svg></button>
+      </div>
+    </nav>
+
+    <!-- ============================= TOP BAR ============================= -->
+    <header class="topbar">
+      <h1 class="greeting">Boa noite, <strong>Rafael</strong></h1>
+
+      <div class="search" role="search">
+        <svg class="i search-i" aria-hidden="true"><use href="#ic-search"/></svg>
+        <input type="search" id="searchInput" placeholder="Buscar" aria-label="Buscar jogos">
+      </div>
+
+      <div class="topbar-actions">
+        <button class="icon-btn fav-chip" id="favChip" type="button" data-action="fav" aria-label="Favoritos (vazio)">
+          <svg class="i i-heart" aria-hidden="true"><use href="#ic-heart"/></svg>
+          <span class="fav-count" aria-hidden="true">0</span>
+        </button>
+        <button class="icon-btn has-badge" type="button" data-action="cart" aria-label="Carrinho (vazio)">
+          <svg class="i" aria-hidden="true"><use href="#ic-cart"/></svg>
+          <span class="btn-badge" id="cartBadge" hidden>0</span>
+        </button>
+        <button class="icon-btn has-dot" type="button" data-action="bell" aria-label="Notifica&#231;&#245;es"><svg class="i" aria-hidden="true"><use href="#ic-bell"/></svg></button>
+      </div>
+    </header>
+
+    <!-- ============================= RAIL DE AVATARES (renderizado via JS) ============================= -->
+    <aside class="rail" id="railMount" aria-label="Amigos"></aside>
+
+    <!-- ============================= PALCO DE CONTE&#218;DO (8 SE&#199;&#213;ES) ============================= -->
+    <main class="content" id="stage">
+      <div class="stage-sweep" aria-hidden="true"></div>
+
+      <!-- ============================================================ IN&#205;CIO -->
+      <section class="view view--home is-active" id="view-inicio" data-view="inicio" aria-label="In&#237;cio">
+
+        <!-- HERO (carrossel de destaques com parallax 3D) -->
+        <section class="hero" id="hero" data-tilt="3.5" aria-label="Jogo em destaque">
+          <canvas class="hero-stars" aria-hidden="true"></canvas>
+
+          <div class="hero-tags">
+            <span class="pill pill-green" data-hero="tag"><svg class="i i-sm" aria-hidden="true"><use href="#ic-flame"/></svg><span data-hero="taglabel">Em alta</span></span>
+            <span class="tag-dot" data-hero="dot0" aria-hidden="true"><svg class="i i-sm"><use href="#ic-gamepad"/></svg></span>
+            <span class="tag-dot" data-hero="dot1" aria-hidden="true"><svg class="i i-sm"><use href="#ic-cloud"/></svg></span>
+          </div>
+
+          <h2 class="hero-title" data-hero="title">Eclipse Protocol</h2>
+          <p class="hero-desc" data-hero="desc">Eclipse Protocol &#233; um tiro em primeira pessoa com partidas competitivas, agentes especiais e mapas din&#226;micos. Monte sua equipe e dispute rodadas intensas pelo mundo.</p>
+
+          <div class="hero-foot">
+            <div class="stack" data-hero="stack" aria-hidden="true">
+              <span class="av"><svg><use href="#av3"/></svg></span>
+              <span class="av"><svg><use href="#av6"/></svg></span>
+              <span class="av"><svg><use href="#av9"/></svg></span>
+            </div>
+            <span class="pill pill-white" data-hero="reviews"><svg class="i i-sm" aria-hidden="true"><use href="#ic-thumb"/></svg><span data-hero="reviewstxt">+53 avalia&#231;&#245;es</span></span>
+          </div>
+
+          <div class="hero-dots">
+            <button class="dot is-active" type="button" aria-label="Ver destaque 1" aria-current="true">1</button>
+            <button class="dot" type="button" aria-label="Ver destaque 2">2</button>
+            <button class="dot" type="button" aria-label="Ver destaque 3">3</button>
+            <button class="dot" type="button" aria-label="Ver destaque 4">4</button>
+          </div>
+
+          <img class="hero-art" src="assets/hero-character.svg" width="440" height="400"
+               alt="Agente do Eclipse Protocol empunhando rifle sob ilumina&#231;&#227;o dourada" fetchpriority="high">
+        </section>
+
+        <!-- LISTA LATERAL DE JOGOS (renderizada via JS, filtr&#225;vel) -->
+        <section class="hero-list" id="listMount" aria-label="Sua lista de jogos"></section>
+
+        <!-- NOVOS JOGOS (carrossel coverflow 3D) -->
+        <section class="sec sec-games" aria-labelledby="sec-games-title">
+          <div class="sec-head">
+            <h2 id="sec-games-title">Novos Jogos<span class="sec-count" id="gamesCount"></span></h2>
+            <a class="see-more" href="#/jogos">Ver mais</a>
+          </div>
+
+          <div class="carousel-wrap">
+            <div class="coverflow" id="coverflow" tabindex="0" role="region"
+                 aria-roledescription="carrossel" aria-label="Carrossel de novos jogos &#8212; use as setas do teclado ou arraste">
+            </div>
+            <p class="sr-only" id="cfLive" aria-live="polite"></p>
+
+            <button class="carousel-next" id="carousel-next" type="button" aria-label="Ver mais jogos">
+              <svg class="i" aria-hidden="true"><use href="#ic-chevron"/></svg>
+            </button>
+          </div>
+        </section>
+
+        <!-- SUA ESTAT&#205;STICA (anel vivo + contadores) -->
+        <section class="sec stat-sec" aria-labelledby="sec-stat-title">
+          <div class="sec-head">
+            <h2 id="sec-stat-title">Sua Estat&#237;stica</h2>
+            <a class="icon-btn icon-btn-sm" href="#/estatisticas" aria-label="Ver estat&#237;sticas completas">
+              <svg class="i" aria-hidden="true"><use href="#ic-arrow"/></svg>
+            </a>
+          </div>
+
+          <div class="stat-card" data-tilt="4">
+            <div class="donut">
+              <span class="donut-ring" aria-hidden="true"></span>
+              <span class="donut-glow" aria-hidden="true"></span>
+              <div class="donut-core">
+                <span class="donut-label">Total de horas</span>
+                <strong class="donut-value">12.340h</strong>
+              </div>
+            </div>
+
+            <div class="stat-foot">
+              <div class="stat-item" data-stat="0">
+                <span class="stat-ic stat-ic-red" aria-hidden="true"><svg class="i"><use href="#ic-gamepad"/></svg></span>
+                <span class="stat-val">2.340h</span>
+              </div>
+              <div class="stat-item" data-stat="1">
+                <span class="stat-ic stat-ic-green" aria-hidden="true"><svg class="i"><use href="#ic-cloud"/></svg></span>
+                <span class="stat-val">5.420h</span>
+              </div>
+              <div class="stat-item" data-stat="2">
+                <span class="stat-ic stat-ic-blue" aria-hidden="true"><svg class="i"><use href="#ic-chat"/></svg></span>
+                <span class="stat-val">4.580h</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- &#218;LTIMOS DOWNLOADS (simula&#231;&#227;o ao vivo) -->
+        <section class="sec sec-dl" aria-labelledby="sec-dl-title">
+          <div class="sec-head">
+            <h2 id="sec-dl-title">&#218;ltimos Downloads</h2>
+            <a class="see-more" href="#/downloads">Ver mais</a>
+          </div>
+
+          <div id="dlMount"></div>
+        </section>
+
+      </section>
+
+      <!-- ============================================================ JOGOS -->
+      <section class="view" id="view-jogos" data-view="jogos" aria-label="Jogos" hidden>
+        <div class="view-head">
+          <div class="view-titles">
+            <h2>Jogos</h2>
+            <p class="view-sub">Cat&#225;logo completo da Nexus &#8212; <span id="jogosCount"></span></p>
+          </div>
+          <div class="view-tools">
+            <div class="seg" role="group" aria-label="Modo de exibi&#231;&#227;o">
+              <button class="seg-btn is-on" type="button" data-jogos-mode="grid" aria-pressed="true" aria-label="Ver em grade"><svg class="i" aria-hidden="true"><use href="#ic-grid"/></svg></button>
+              <button class="seg-btn" type="button" data-jogos-mode="list" aria-pressed="false" aria-label="Ver em lista"><svg class="i" aria-hidden="true"><use href="#ic-list"/></svg></button>
+            </div>
+            <select class="mini-select" id="jogosSort" aria-label="Ordenar jogos">
+              <option value="rating">Melhor avalia&#231;&#227;o</option>
+              <option value="az">A&#8211;Z</option>
+              <option value="new">Novidades</option>
+              <option value="hours">Mais jogados</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="chip-row" id="jogosFilters" role="group" aria-label="Filtrar por g&#234;nero"></div>
+
+        <div class="shelf-sec">
+          <h3 class="mini-title">Mais jogados por voc&#234;</h3>
+          <div class="shelf" id="jogosShelf"></div>
+        </div>
+
+        <div class="game-grid" id="jogosGrid"></div>
+        <p class="empty-note" id="jogosEmpty" hidden>Nenhum jogo encontrado para este filtro.</p>
+      </section>
+
+      <!-- ============================================================ LOJA -->
+      <section class="view" id="view-loja" data-view="loja" aria-label="Loja" hidden>
+        <div class="view-head">
+          <div class="view-titles">
+            <h2>Loja</h2>
+            <p class="view-sub">Ofertas da semana &#8212; <span id="lojaCount"></span></p>
+          </div>
+          <div class="view-tools">
+            <select class="mini-select" id="lojaSort" aria-label="Ordenar jogos">
+              <option value="featured">Destaques</option>
+              <option value="price-asc">Menor pre&#231;o</option>
+              <option value="price-desc">Maior pre&#231;o</option>
+              <option value="rating">Melhor avalia&#231;&#227;o</option>
+              <option value="new">Novidades</option>
+            </select>
+            <button class="btn btn-primary cart-open" type="button" data-action="cart-open">
+              <svg class="i i-sm" aria-hidden="true"><use href="#ic-cart"/></svg>
+              Carrinho <span class="cart-badge" id="lojaCartBadge">0</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="store-hero" id="storeHero"></div>
+
+        <div class="flash">
+          <div class="flash-head">
+            <h3 class="mini-title"><svg class="i i-sm" aria-hidden="true"><use href="#ic-flame"/></svg> Ofertas rel&#226;mpago</h3>
+            <span class="flash-timer" id="flashTimer"></span>
+          </div>
+          <div class="flash-row" id="flashRow"></div>
+        </div>
+
+        <div class="chip-row" id="lojaFilters" role="group" aria-label="Filtrar por g&#234;nero"></div>
+        <div class="game-grid" id="lojaGrid"></div>
+        <p class="empty-note" id="lojaEmpty" hidden>Nenhum jogo encontrado para este filtro.</p>
+      </section>
+
+      <!-- ============================================================ BIBLIOTECA -->
+      <section class="view" id="view-biblioteca" data-view="biblioteca" aria-label="Biblioteca" hidden>
+        <div class="view-head">
+          <div class="view-titles">
+            <h2>Biblioteca</h2>
+            <p class="view-sub" id="biblioCount"></p>
+          </div>
+          <div class="view-tools">
+            <select class="mini-select" id="biblioSort" aria-label="Ordenar biblioteca">
+              <option value="recent">&#218;ltimos jogados</option>
+              <option value="hours">Mais jogados</option>
+              <option value="az">A&#8211;Z</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="chip-row" id="biblioTabs" role="group" aria-label="Filtrar biblioteca"></div>
+        <div class="game-grid" id="biblioGrid"></div>
+        <p class="empty-note" id="biblioEmpty" hidden>Nenhum jogo neste filtro.</p>
+      </section>
+
+      <!-- ============================================================ DOWNLOADS -->
+      <section class="view" id="view-downloads" data-view="downloads" aria-label="Downloads" hidden>
+        <div class="view-head">
+          <div class="view-titles">
+            <h2>Downloads</h2>
+            <p class="view-sub" id="dlSub">Fila de downloads</p>
+          </div>
+          <div class="view-tools">
+            <button class="btn btn-ghost" id="dlPauseAll" type="button">
+              <svg class="i i-sm" aria-hidden="true"><use href="#ic-pause"/></svg><span>Pausar tudo</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="storage-card">
+          <div class="storage-top"><span>Armazenamento</span><strong id="storageTxt"></strong></div>
+          <div class="storage-bar" id="storageBar" role="img" aria-label="Uso do armazenamento"></div>
+          <div class="storage-legend" id="storageLegend"></div>
+          <div id="storageBtns" class="storage-btns"></div>
+        </div>
+
+        <div class="dlp-section">
+          <h3 class="mini-title">Baixando agora</h3>
+          <div id="dlpActive"></div>
+        </div>
+        <div class="dlp-section">
+          <h3 class="mini-title">Na fila</h3>
+          <div class="dlp-list" id="dlpQueue"></div>
+        </div>
+        <div class="dlp-section">
+          <h3 class="mini-title">Conclu&#237;dos</h3>
+          <div class="dlp-list" id="dlpDone"></div>
+        </div>
+      </section>
+
+      <!-- ============================================================ ESTAT&#205;STICAS -->
+      <section class="view" id="view-estatisticas" data-view="estatisticas" aria-label="Estat&#237;sticas" hidden>
+        <div class="view-head">
+          <div class="view-titles">
+            <h2>Estat&#237;sticas</h2>
+            <p class="view-sub">Seu hist&#243;rico completo na Nexus Play</p>
+          </div>
+        </div>
+
+        <div class="kpi-row" id="statKpis"></div>
+
+        <div class="panel">
+          <div class="panel-head"><h3 class="mini-title">Horas por semana</h3><span class="panel-note" id="trendNote"></span></div>
+          <div class="chart-area" id="trendChart"></div>
+        </div>
+
+        <div class="panel-split">
+          <div class="panel">
+            <div class="panel-head"><h3 class="mini-title">&#218;ltimos 7 dias</h3><span class="panel-note">horas jogadas</span></div>
+            <div class="week-bars" id="weekBars"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h3 class="mini-title">G&#234;neros favoritos</h3><span class="panel-note">por tempo jogado</span></div>
+            <div class="genre-wrap">
+              <div class="gen-donut" id="genreDonut"></div>
+              <ul class="gen-legend" id="genreLegend"></ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><h3 class="mini-title">Mapa de calor</h3><span class="panel-note">&#250;ltimas 12 semanas</span></div>
+          <div class="heatmap" id="heatmap"></div>
+        </div>
+
+        <div class="panel-split">
+          <div class="panel">
+            <div class="panel-head"><h3 class="mini-title">Top jogos</h3><span class="panel-note">por horas</span></div>
+            <ul class="top-list" id="topGames"></ul>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h3 class="mini-title">Conquistas</h3><span class="panel-note" id="achNote"></span></div>
+            <ul class="ach-list" id="achievements"></ul>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><h3 class="mini-title">Comparando com amigos</h3><span class="panel-note">horas nas &#250;ltimas 4 semanas</span></div>
+          <ul class="cmp-list" id="compareBars"></ul>
+        </div>
+      </section>
+
+      <!-- ============================================================ AMIGOS -->
+      <section class="view" id="view-amigos" data-view="amigos" aria-label="Amigos" hidden>
+        <div class="view-head">
+          <div class="view-titles">
+            <h2>Amigos</h2>
+            <p class="view-sub" id="amigosSub"></p>
+          </div>
+          <div class="view-tools">
+            <button class="btn btn-primary" id="btnInvite" type="button">
+              <svg class="i i-sm" aria-hidden="true"><use href="#ic-user-plus"/></svg>Convidar amigo
+            </button>
+          </div>
+        </div>
+
+        <div class="chip-row" id="amigosTabs" role="group" aria-label="Filtrar amigos"></div>
+        <div class="friend-grid" id="amigosGrid"></div>
+        <p class="empty-note" id="amigosEmpty" hidden>Nenhum amigo encontrado.</p>
+
+        <div class="panel">
+          <div class="panel-head"><h3 class="mini-title">Atividade recente</h3></div>
+          <ul class="feed" id="activityFeed"></ul>
+        </div>
+      </section>
+
+      <!-- ============================================================ CHAT -->
+      <section class="view" id="view-chat" data-view="chat" aria-label="Chat" hidden>
+        <div class="chat" id="chatRoot">
+          <aside class="chat-side">
+            <div class="chat-side-head">Conversas <span class="chat-online" id="chatOnline"></span></div>
+            <ul class="chat-list" id="chatList"></ul>
+          </aside>
+          <div class="chat-main">
+            <div class="chat-head" id="chatHead">
+              <button class="icon-btn chat-back" id="chatBack" type="button" aria-label="Voltar para conversas">
+                <svg class="i" aria-hidden="true"><use href="#ic-arrow-left"/></svg>
+              </button>
+              <span class="chat-head-av" id="chatHeadAv" aria-hidden="true"></span>
+              <div class="chat-head-info">
+                <strong id="chatHeadName"></strong>
+                <span class="chat-head-status" id="chatHeadStatus"></span>
+              </div>
+            </div>
+            <div class="chat-msgs" id="chatMsgs" role="log" aria-live="polite"></div>
+            <form class="chat-form" id="chatForm">
+              <div class="chat-emoji" id="chatEmoji">
+                <button type="button" data-emoji="&#55357;&#56613;" aria-label="Emoji fogo">&#55357;&#56613;</button>
+                <button type="button" data-emoji="&#55356;&#57262;" aria-label="Emoji controle">&#55356;&#57262;</button>
+                <button type="button" data-emoji="&#55357;&#56834;" aria-label="Emoji rindo">&#55357;&#56834;</button>
+                <button type="button" data-emoji="GG" aria-label="Texto GG">GG</button>
+                <button type="button" data-emoji="&#55357;&#56397;" aria-label="Emoji joinha">&#55357;&#56397;</button>
+              </div>
+              <input type="text" id="chatInput" placeholder="Escreva uma mensagem&#8230;" aria-label="Mensagem" autocomplete="off" maxlength="240">
+              <button class="chat-send" type="submit" aria-label="Enviar mensagem"><svg class="i" aria-hidden="true"><use href="#ic-send"/></svg></button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div><!-- /.app -->
+</div><!-- /.page -->
+
+<!-- ============================= CARRINHO ============================= -->
+<aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Carrinho de compras" hidden>
+  <div class="cart-back" data-cart-close></div>
+  <div class="cart-panel">
+    <div class="cart-head">
+      <h2>Carrinho <span class="cart-count" id="cartCount"></span></h2>
+      <button class="icon-btn" type="button" data-cart-close aria-label="Fechar carrinho"><svg class="i" aria-hidden="true"><use href="#ic-close"/></svg></button>
+    </div>
+    <ul class="cart-items" id="cartItems"></ul>
+    <p class="cart-empty" id="cartEmpty">Seu carrinho est&#225; vazio. Explore a loja!</p>
+    <div class="cart-foot">
+      <div class="cart-total"><span>Total</span><strong id="cartTotal">R$ 0,00</strong></div>
+      <button class="btn btn-primary btn-block" id="btnCheckout" type="button" disabled>Finalizar compra</button>
+    </div>
+  </div>
+</aside>
+
+<!-- ============================= POP DE AMIGO ============================= -->
+<div class="friend-pop" id="friendPop" role="dialog" aria-label="Perfil do amigo" hidden>
+  <div class="pop-head">
+    <span class="pop-av" aria-hidden="true"></span>
+    <div>
+      <div class="pop-name"></div>
+      <div class="pop-status"><span class="pop-dot" aria-hidden="true"></span><span class="pop-status-txt"></span></div>
+    </div>
+  </div>
+  <div class="pop-game" hidden></div>
+  <div class="pop-actions">
+    <button class="btn btn-primary" id="popMsg" type="button">Mensagem</button>
+    <button class="btn btn-ghost" id="popInvite" type="button">Convidar</button>
+  </div>
+</div>
+
+<!-- ============================= MODAL DE DETALHE ============================= -->
+<div class="modal" id="modal" hidden>
+  <div class="modal-back" data-close></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-x" id="modalClose" type="button" data-close aria-label="Fechar detalhes">
+      <svg class="i" aria-hidden="true"><use href="#ic-close"/></svg>
+    </button>
+    <img class="modal-art" id="modalArt" alt="" width="520" height="500" decoding="async">
+    <div class="modal-body">
+      <span class="modal-kicker" id="modalKicker"></span>
+      <h3 class="modal-title" id="modalTitle"></h3>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-chips" id="modalChips"></div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="btnPlay" type="button"><svg class="i i-sm" aria-hidden="true"><use href="#ic-play"/></svg>Jogar agora</button>
+        <button class="btn btn-ghost" id="btnDl" type="button"><svg class="i i-sm" aria-hidden="true"><use href="#ic-download"/></svg>Baixar</button>
+        <button class="btn btn-fav" id="btnFav" type="button" aria-pressed="false" aria-label="Favoritar"><svg class="i i-heart" aria-hidden="true"><use href="#ic-heart"/></svg></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================= TOASTS ============================= -->
+<div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
+
+<!-- ============================= PALETA DE CORES ============================= -->
+<div class="palette" id="palette">
+  <div class="palette-pop" role="group" aria-label="Cor de destaque">
+    <button class="swatch is-on" type="button" data-accent="#E8404A" style="background:#E8404A" aria-label="Destaque vermelho"></button>
+    <button class="swatch" type="button" data-accent="#35D0C5" style="background:#35D0C5" aria-label="Destaque ciano"></button>
+    <button class="swatch" type="button" data-accent="#A78BFA" style="background:#A78BFA" aria-label="Destaque violeta"></button>
+    <button class="swatch" type="button" data-accent="#F5A63A" style="background:#F5A63A" aria-label="Destaque &#226;mbar"></button>
+  </div>
+  <button class="palette-btn" id="paletteBtn" type="button" aria-label="Mudar cor de destaque">
+    <svg class="i" aria-hidden="true"><use href="#ic-palette"/></svg>
+  </button>
+</div>
+
+<!-- brilho que segue o cursor -->
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/views.js"></script>
+
+</body>
+</html>

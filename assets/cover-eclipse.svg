@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 500" width="520" height="500">
+  <defs>
+    <linearGradient id="eBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3E0F18"/>
+      <stop offset=".55" stop-color="#1E0810"/>
+      <stop offset="1" stop-color="#0A0306"/>
+    </linearGradient>
+    <radialGradient id="eCorona" cx=".5" cy=".5" r=".5">
+      <stop offset=".52" stop-color="#FFB65C" stop-opacity="0"/>
+      <stop offset=".66" stop-color="#FFB65C" stop-opacity=".85"/>
+      <stop offset=".82" stop-color="#E8404A" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#E8404A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="eGlow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FF8C6B" stop-opacity=".4"/>
+      <stop offset="1" stop-color="#FF8C6B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="520" height="500" fill="url(#eBg)"/>
+
+  <!-- estrelas -->
+  <g fill="#F3D8DE" opacity=".8">
+    <circle cx="60" cy="70" r="2" opacity=".8"/><circle cx="150" cy="40" r="1.4" opacity=".6"/>
+    <circle cx="430" cy="60" r="2.2" opacity=".9"/><circle cx="480" cy="150" r="1.5" opacity=".6"/>
+    <circle cx="40" cy="180" r="1.6" opacity=".7"/><circle cx="360" cy="30" r="1.6" opacity=".7"/>
+    <circle cx="240" cy="96" r="1.4" opacity=".5"/><circle cx="500" cy="240" r="1.7" opacity=".6"/>
+  </g>
+
+  <!-- eclipse -->
+  <circle cx="262" cy="186" r="190" fill="url(#eGlow)"/>
+  <circle cx="262" cy="186" r="150" fill="url(#eCorona)"/>
+  <circle cx="262" cy="186" r="88" fill="#07030A"/>
+  <path d="M262 98a88 88 0 0 0 0 176 96 96 0 0 1 0-176z" fill="#160A12"/>
+
+  <!-- montanhas -->
+  <path d="M0 500V368l84-56 58 44 92-104 96 118 70-52 120 74v108z" fill="#12060C"/>
+  <path d="M0 500v-72l120-44 88 58 78-42 108 62 86-30 40 18v50z" fill="#0A0408"/>
+
+  <!-- silhueta solitária -->
+  <g fill="#020103">
+    <circle cx="258" cy="372" r="10"/>
+    <path d="M250 386c8-5 16-5 22 0l6 30-10 6-4-14-2 34h-12l-2-36-8 16-10-8z"/>
+    <path d="m244 448-2 52h12l2-52zM266 448l4 52h12l-4-52z"/>
+  </g>
+  <!-- capa ao vento -->
+  <path d="M274 392c18 6 30 20 34 40-16-2-30-12-38-26z" fill="#020103"/>
+</svg>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 500" width="520" height="500">
+  <defs>
+    <linearGradient id="sBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4A1412"/>
+      <stop offset=".55" stop-color="#2A0C0D"/>
+      <stop offset="1" stop-color="#150708"/>
+    </linearGradient>
+    <radialGradient id="sFire" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FF9A45" stop-opacity=".85"/>
+      <stop offset=".55" stop-color="#E8404A" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#E8404A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sMask" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F2E4D8"/>
+      <stop offset="1" stop-color="#9C8478"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="520" height="500" fill="url(#sBg)"/>
+  <ellipse cx="260" cy="470" rx="300" ry="200" fill="url(#sFire)"/>
+  <ellipse cx="120" cy="120" rx="180" ry="140" fill="url(#sFire)" opacity=".5"/>
+
+  <!-- silhuetas de arquitetura -->
+  <g fill="#180708" opacity=".9">
+    <path d="M0 500V250l40-40 40 40v250z"/>
+    <path d="M440 500V210l40-46 40 46v290z"/>
+    <path d="M60 500V320l36-30 36 30v180z"/>
+    <path d="M388 500V330l34-28 34 28v170z"/>
+  </g>
+
+  <!-- figura encapuzada -->
+  <g>
+    <path d="M260 120c56 0 92 44 92 104 0 44-16 74-34 96l-14 180H216l-14-180c-18-22-34-52-34-96 0-60 36-104 92-104z" fill="#1B0A0C"/>
+    <path d="M260 120c56 0 92 44 92 104 0 44-16 74-34 96l-8 96h-100l-8-96c-18-22-34-52-34-96 0-60 36-104 92-104z" fill="#24100F"/>
+    <!-- capuz -->
+    <path d="M260 96c62 0 104 50 104 116 0 40-14 72-34 96l-16-40c14-22 24-50 24-84 0-54-34-92-78-92s-78 38-78 92c0 34 10 62 24 84l-16 40c-20-24-34-56-34-96 0-66 42-116 104-116z" fill="#150607"/>
+    <!-- máscara -->
+    <path d="M212 214h96v34c0 30-22 52-48 52s-48-22-48-52z" fill="url(#sMask)"/>
+    <path d="M226 232h68v14h-68z" fill="#1B0A0C"/>
+    <path d="M244 250v24M260 250v30M276 250v24" stroke="#C9B2A4" stroke-width="4" stroke-linecap="round"/>
+    <!-- olhos -->
+    <circle cx="242" cy="239" r="6" fill="#E8404A"/>
+    <circle cx="278" cy="239" r="6" fill="#E8404A"/>
+    <!-- gola -->
+    <path d="M198 336c34 24 90 24 124 0l16 30c-46 34-110 34-156 0z" fill="#3A1517"/>
+    <path d="M204 396c36 22 76 22 112 0l10 24c-44 26-88 26-132 0z" fill="#2A0F11"/>
+  </g>
+
+  <!-- lâmina -->
+  <g transform="rotate(18 400 380)">
+    <rect x="392" y="270" width="16" height="150" rx="8" fill="#D8CFC4"/>
+    <rect x="396" y="274" width="6" height="142" rx="3" fill="#FFF6E8" opacity=".8"/>
+    <rect x="380" y="414" width="40" height="14" rx="6" fill="#8A5B2A"/>
+    <rect x="392" y="426" width="16" height="42" rx="7" fill="#33202A"/>
+  </g>
+
+  <!-- brasas -->
+  <g fill="#FF8A4C">
+    <circle cx="132" cy="330" r="5" opacity=".8"/>
+    <circle cx="386" cy="180" r="4" opacity=".7"/>
+    <circle cx="440" cy="330" r="6" opacity=".6"/>
+    <circle cx="90" cy="180" r="4" opacity=".6"/>
+    <circle cx="330" cy="410" r="4" opacity=".55"/>
+    <circle cx="176" cy="130" r="3.5" opacity=".55"/>
+    <circle cx="466" cy="120" r="3.5" opacity=".5"/>
+    <circle cx="58" cy="420" r="4" opacity=".5"/>
+  </g>
+</svg>
