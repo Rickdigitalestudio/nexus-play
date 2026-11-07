@@ -4,7 +4,7 @@ Seu hub central de jogos premium 3D — jogos em destaque, loja, biblioteca, dow
 
 ## 🚀 Demo ao vivo
 
-Acesse: https://SEU-USUARIO.github.io/nexus-play/
+Acesse: https://rickdigitalestudio.github.io/nexus-play/
 
 ## 📦 Como rodar localmente
 
