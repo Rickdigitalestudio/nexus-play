@@ -81,9 +81,13 @@
     var cls = f.status === 'online' ? ' is-online' : (f.status === 'offline' ? ' is-offline' : '');
     var badge = f.status === 'playing'
       ? '<span class="badge badge-game" aria-hidden="true">' + svgUse('ic-gamepad', 'i-mini') + '</span>' : '';
+    // Se avatar for URL de imagem, usa img tags; se for nome de avatar SVG, usa use
+    var avatarHtml = (f.avatar && f.avatar.startsWith('http'))
+      ? '<img src="' + f.avatar + '" class="rail-avatar-img" alt="' + f.name + '" />'
+      : '<svg aria-hidden="true"><use href="#' + f.avatar + '"/></svg>';
+
     return '<button class="rail-avatar' + cls + '" type="button" data-friend="' + i +
-      '" aria-label="' + esc(friendLabel(f)) + '"><svg aria-hidden="true"><use href="#' + f.avatar +
-      '"/></svg>' + badge + '</button>';
+      '" aria-label="' + esc(friendLabel(f)) + '">' + avatarHtml + badge + '</button>';
   }
   function renderRail() { railMount.innerHTML = D.friends.map(friendBtnHtml).join(''); }
   function updateFriend(i) {
@@ -906,7 +910,9 @@
     var f = D.friends[i];
     if (!f || !pop) return;
     popFor = i;
-    $('.pop-av', pop).innerHTML = '<svg aria-hidden="true"><use href="#' + f.avatar + '"/></svg>';
+    $('.pop-av', pop).innerHTML = (f.avatar && f.avatar.startsWith('http'))
+      ? '<img src="' + f.avatar + '" class="pop-av-img" alt="' + f.name + '" />'
+      : '<svg aria-hidden="true"><use href="#' + f.avatar + '"/></svg>';
     $('.pop-name', pop).textContent = f.name;
     var dot = $('.pop-dot', pop);
     dot.className = 'pop-dot ' + statusClass(f.status);

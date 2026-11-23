@@ -254,6 +254,27 @@ a{color:inherit}
 .rail-avatar:hover{transform:scale(1.07);border-color:rgba(245,234,236,.6)}
 .rail-avatar.is-online{border-color:#8FD99B}
 .rail-avatar.is-offline{border-color:rgba(160,138,147,.5);filter:saturate(.7) brightness(.9)}
+/* ------------------------------ Avatar foto real ------------------------------ */
+.rail-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.2s;
+}
+.rail-avatar-img:hover {
+  transform: scale(1.1);
+}
+
+/* Estilo para o avatar no perfil popup */
+.pop-av-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--champagne);
+  margin-bottom: 8px;
+}
 
 .badge{
   position:absolute;right:-3px;bottom:-3px;
